@@ -14,7 +14,7 @@ Template Name: Contact Us Form
 						<?php if ( has_post_thumbnail() ) { the_post_thumbnail('large'); } ?>
 						<?php the_content(); ?>
 						<div class="contact-us-page">
-            <?php        if( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'contact-form' ) ) {  echo do_shortcode('[ninja_form id=1]');} ?>
+<?php        if( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'contact-form' ) ) {  echo do_shortcode('[ninja_form id=1]');} ?>
 	<div style="clear:both"></div>
 </div>
 					</div>

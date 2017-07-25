@@ -1,16 +1,16 @@
 <?php get_header(); ?>
-	<?php if (have_posts()) :  while (have_posts()) : the_post();?>
-		<?php
+	<?php if (have_posts()) :  while (have_posts()) : the_post();?>	 
+		<?php 
 			  global $options;$fields;$options2;$options3;
 			  $fields = get_post_meta($post->ID, 'mod1', true);
 			  $options = my_get_theme_options();
 			  $options2 = get_post_meta($post->ID, 'mod2', true);
 			  $options3 = get_post_meta($post->ID, 'mod3', true);
-			  ?>
+			  ?>	
 			  <?php cps_ajax_search_results_single(); ?>
 			  <div class="col-sm-9  col-sm-push-3 hideOnSearch">
 			  	<div class="row">
-			  		<div class="col-sm-8">
+			  		<div class="col-sm-8">	
 					<div id="wrap">
 						<div id="myCarousel" class="carousel fade hideOnSearch single" data-interval="false" data-ride="carousel">
 							<div class="carousel-inner">
@@ -20,11 +20,11 @@
 								<i class="fa fa-angle-left fa-2x"></i></a>
 							<a class="right carousel-control" href="#myCarousel" data-slide="next">
 								<i class="fa fa-angle-right fa-2x"></i></a>
-						</div>
+						</div> 
 						<div id="my-thumbs-list" class="carousel">
 							<ul class="carousel-thumbs hideOnSearch thumbnail">
 								<?php gallery_thumbs ($post->ID,'thumbnail'); ?>
-							</ul>
+							</ul>    
  						</div>
  					</div>
  				<div style="clear: both"></div>
@@ -39,7 +39,7 @@
           				</a>
 		  			</li>
 		  			<?php $video_source = get_post_meta($post->ID, 'video_meta_box_source', true);
-						  $video_id = get_post_meta($post->ID, 'video_meta_box_videoid', true);
+						  $video_id = get_post_meta($post->ID, 'video_meta_box_videoid', true);	
 						  if(($video_source == "vimeo") && !empty($video_id)){ ?>
 					<li>
 		  				<a href="#video" role="tab" data-toggle="tab">
@@ -51,7 +51,7 @@
 		  			<a href="#video" role="tab" data-toggle="tab">
 		  				<?php _e('Video','language');?>
           			</a>
-		  			</li>
+		  			</li>									
 					<?php  } ?>
 		  			<li>
 		  				<a href="#contact" role="tab" data-toggle="tab">
@@ -62,9 +62,9 @@
 		  	<div class="tab-content hideOnSearch">
 			  	<div class="tab-pane active" id="overview">
 			<ul class="overview">
-			<?php
+			<?php 
 				$content = get_the_content();
-				$content = preg_replace("/<img[^>]+\>/i", " ", $content);
+				$content = preg_replace("/<img[^>]+\>/i", " ", $content);          
 				$content = apply_filters('the_content', $content);
 				$content = str_replace(']]>', ']]>', $content);
 				?><h1><?php if ( $fields['year']){ echo $fields['year'];}else {  echo ''; }?></span> <?php  $terms_child = get_the_terms($post->ID,'makemodel');
@@ -104,20 +104,20 @@
 			</ul>
     </div>
     <div class="tab-pane fade" id="features">
-    <div class="item-list">
+    <div class="item-list">								
 		<ul class="features  features-list">
 		<?php	if (get_the_terms($post->ID, 'features')) {
-				$taxonomy = get_the_terms($post->ID, 'features');
+				$taxonomy = get_the_terms($post->ID, 'features');									
 				foreach ($taxonomy as $taxonomy_term) {
-			?> <li><?php echo $taxonomy_term->name;?></li><?php }
+			?> <li><?php echo $taxonomy_term->name;?></li><?php }  														
 			}
 			?>
-        </ul>
+        </ul>    
 	</div>
     </div>
 <div class="tab-pane fade" id="contact">
- <?php echo do_shortcode('[ninja_form id=1]');?>
- 	<div style="clear:both"></div>
+<?php echo do_shortcode('[ninja_form id=1]');?>
+	<div style="clear:both"></div>
 </div>
 	<div class="tab-pane fade" id="video">
 		<ul class="video">
@@ -137,20 +137,20 @@ $video_id = get_post_meta($post->ID, 'video_meta_box_videoid', true);		if(($vide
     </div>
 	<div style="clear: both"></div>
 </div>
-<?php endwhile; endif; ?>
-<div class="col-sm-4 single-sidebar hideOnSearch">
+<?php endwhile; endif; ?>   
+<div class="col-sm-4 single-sidebar hideOnSearch">	
 	<span class="info-single">
 		<h3 class="price-single"><?php $options['price_text'];?>
 			<?php if (is_numeric( $fields['price'])){ echo $options['currency_text'].number_format($fields['price']);}else {  echo  $fields['price']; }?>
 		</h3>
 		<div class="buttons-action">
-
+		
 			<a  type="button" class="btn btn-default btn-lg offer" href="mailto:<?php echo get_the_author_meta( 'user_email' );?>?subject=Vehicle information request&body=<?php echo	"I would like to request more information about your ". $fields['year'].' '.$post->post_title.' with Stock Number #'. $fields['stock'];?>">
 					<i class="fa fa-envelope-o"></i> <?php _e('Request Information','language');?>
 			</a>
 		</div>
          <?php if ( is_active_sidebar( 'seller' ) ) : ?>
-        <?php dynamic_sidebar( 'seller' ); ?>
+        <?php dynamic_sidebar( 'seller' ); ?>  
         <?php endif; ?>
 		<ul class="quick-list quick-glance hideOnSearch ">
 		<?php echo do_shortcode('[socialbuttons]');?>
@@ -175,7 +175,7 @@ $video_id = get_post_meta($post->ID, 'video_meta_box_videoid', true);		if(($vide
 				$find_parent = 0;
 				for( $i = 0; $i < sizeof($terms); ++$i) {
 					if (is_array($terms)) {
-
+				
 				foreach ($terms as $term) {
 				      if ($term->parent == $find_parent) {
 				         $find_parent = $term->term_id;
@@ -186,7 +186,7 @@ $video_id = get_post_meta($post->ID, 'video_meta_box_videoid', true);		if(($vide
 				}
 				if ( ! isset($sorted_terms[0])) {
 				$sorted_terms[0] = null; } else {
-				echo ', '.$sorted_terms[0]->name.'</p><div style="clear:both"></div></li>';}
+				echo ', '.$sorted_terms[0]->name.'</p><div style="clear:both"></div></li>';} 
 				global $user_ID;
 				if  (get_the_author_meta('phone',$user_ID)  == true ) {
 				echo '<li><p>'.__('Phone: ','language').'</p>'.get_the_author_meta('phone').'</li>';  }else {  echo ''; }
@@ -201,19 +201,19 @@ $video_id = get_post_meta($post->ID, 'video_meta_box_videoid', true);		if(($vide
    				if (!empty($fields['stock'])){ echo '<li><p>'.$options['stock_text'].':</p> '.$fields['stock'].'</li>';}else {  echo ''; }
    				if (!empty( $fields['vin'])){ echo '<li><p>'.$options['vin_text'].':</p> '.$fields['vin'].'</li>';}else {  echo ''; }?>
    				<div style="clear: both"></div>
-   				<div><?php if (!empty( $fields['carfax'])){ ?><a class="carfax" target="_blank" href='https://www.carfax.com/VehicleHistory/p/Report.cfx?partner=<?php  echo $fields['carfax']; ?>&vin=<?php  echo $fields['vin']; ?>'><img style="border:1px solid #ccc" src='https://www.carfaxonline.com/media/img/subscriber/buyback.jpg' border='0'></a><?php  }else {   echo '';  }?></div>
+   				<div><?php if (!empty( $fields['carfax'])){ ?><a class="carfax" target="_blank" href='https://www.carfax.com/VehicleHistory/p/Report.cfx?partner=<?php  echo $fields['carfax']; ?>&vin=<?php  echo $fields['vin']; ?>'><img style="border:1px solid #ccc" src='https://www.carfaxonline.com/media/img/subscriber/buyback.jpg' border='0'></a><?php  }else {   echo '';  }?></div>		
    			</ul>
 			<?php if ( ! dynamic_sidebar( 'specs' )) : ?>
-			<?php endif; ?>
+			<?php endif; ?>     
 				</span>
 			</span>
 		</div>
 	</div>
-</div>
+</div>  
 <div class="col-sm-3 col-sm-pull-9">
 	<?php if ( ! dynamic_sidebar( 'search' ) ) : endif; ?>
 	<?php if ( ! dynamic_sidebar('sidebar')) :   endif; ?>
-</div>
+</div>    
 <div class="col-sm-12">
 	<?php if ( ! dynamic_sidebar('featured')) : endif; ?>
 </div>

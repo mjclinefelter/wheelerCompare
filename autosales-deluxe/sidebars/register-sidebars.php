@@ -871,7 +871,7 @@ class Carousel extends WP_Widget
 
 ?>
 
-<div id="myCarousel" class="carousel fade home col-sm-12 hideOnSearch" data-interval="10000" data-ride="carousel">
+<div id="myCarousel" class="carousel slide home col-sm-12 hideOnSearch" data-interval="10000" data-ride="carousel">
 	<!-- Wrapper for slides -->
 	
 	
